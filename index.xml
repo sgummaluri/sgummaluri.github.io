@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>404 [!] Found</title>
+    <link>https://saikumar.dev/</link>
+    <description>Recent content on 404 [!] Found</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 25 May 2020 19:23:14 +0530</lastBuildDate>
+    
+	<atom:link href="https://saikumar.dev/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>HTTP Status Codes - 2</title>
+      <link>https://saikumar.dev/posts/http-status-codes-2/</link>
+      <pubDate>Mon, 25 May 2020 19:23:14 +0530</pubDate>
+      
+      <guid>https://saikumar.dev/posts/http-status-codes-2/</guid>
+      <description>This article is the second in the HTTP Status Code Series and deals with the category of Successful Responses. The first article in the series can be found here.
+We are going to take a look at the most frequently used Status codes for a successful response that is sent from the server to the client. Also, bear in mind that we are not going to deal with the status codes 207 Multi-Status and 208 Already Reported, which are used in the WebDAV cases; the 226 IM Used status code which is used with HTTP Delta Encoding.</description>
+    </item>
+    
+    <item>
+      <title>HTTP Status Codes - 1</title>
+      <link>https://saikumar.dev/posts/http-status-codes-1/</link>
+      <pubDate>Sun, 10 May 2020 19:56:44 +0530</pubDate>
+      
+      <guid>https://saikumar.dev/posts/http-status-codes-1/</guid>
+      <description>It is an undeniable fact that HTTP is the de facto standard of the Internet. Wikipedia terms HTTP as an application protocol for distributed, collaborative, hypermedia based information systems. With the advent of the world wide web, came applications that talked to each other over a network to exchange information. Be it the age old RPC style of directly invoking a network service or calling a RESTful endpoint on a server, HTTP is the medium over which this communication happens.</description>
+    </item>
+    
+    <item>
+      <title>Architecture Decision Records</title>
+      <link>https://saikumar.dev/posts/adr/</link>
+      <pubDate>Sat, 25 Apr 2020 18:32:59 +0530</pubDate>
+      
+      <guid>https://saikumar.dev/posts/adr/</guid>
+      <description>Every software developer that ever worked on a project that has been under development for a considerable amount of time or ever dealt with a mature codebase, would have criticised the way things are structured in the project or might have even cussed about the orchestration of the components and the design overall.
+This inevitably seems to happen in scenarios where a new developer is on-boarded to work on a project/product that is already in production and has real users using that product.</description>
+    </item>
+    
+    <item>
+      <title>Hello World</title>
+      <link>https://saikumar.dev/posts/hello-world/</link>
+      <pubDate>Fri, 13 Sep 2019 18:25:31 +0530</pubDate>
+      
+      <guid>https://saikumar.dev/posts/hello-world/</guid>
+      <description>Coming soon</description>
+    </item>
+    
+  </channel>
+</rss>

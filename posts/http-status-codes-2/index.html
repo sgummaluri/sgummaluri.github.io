@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    
+
+    
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:400|Old+Standard+TT:400' rel='stylesheet' type='text/css'>
+    
+
+    <link rel="icon" type="image/png" href="https://saikumar.dev/favicon_16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="https://saikumar.dev/favicon_32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://saikumar.dev/favicon_128x128.png" sizes="128x128">
+
+    <title>
+      
+      
+         HTTP Status Codes - 2 
+      
+    </title>
+    <link rel="canonical" href="https://saikumar.dev/posts/http-status-codes-2/">
+
+    <style>
+  * {
+    border:0;
+    font:inherit;
+    font-size:100%;
+    vertical-align:baseline;
+    margin:0;
+    padding:0;
+    color: black;
+    text-decoration-skip: ink;
+  }
+
+  body {
+    font-family:'Open Sans', 'Myriad Pro', Myriad, sans-serif;
+    font-size:17px;
+    line-height:160%;
+    color:#1d1313;
+    max-width:700px;
+    margin:auto;
+  }
+
+  p {
+    margin: 20px 0;
+  }
+
+  a img {
+    border:none;
+  }
+
+  img {
+    margin: 10px auto 10px auto;
+    max-width: 100%;
+    display: block;
+  }
+
+  .left-justify {
+    float: left;
+  }
+
+  .right-justify {
+    float:right;
+  }
+
+  pre, code {
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    background-color: #f7f7f7;
+  }
+
+  code {
+    font-size: 12px;
+    padding: 4px;
+  }
+
+  pre {
+    margin-top: 0;
+    margin-bottom: 16px;
+    word-wrap: normal;
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+  }
+
+  pre>code {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    word-break: normal;
+    white-space: pre;
+    background: transparent;
+    border: 0;
+  }
+
+  pre code {
+    display: inline;
+    max-width: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    line-height: inherit;
+    word-wrap: normal;
+    background-color: transparent;
+    border: 0;
+  }
+
+  pre code::before,
+  pre code::after {
+    content: normal;
+  }
+
+  em,q,em,dfn {
+    font-style:italic;
+  }
+
+  .sans,html .gist .gist-file .gist-meta {
+    font-family:"Open Sans","Myriad Pro",Myriad,sans-serif;
+  }
+
+  .mono,pre,code,tt,p code,li code {
+    font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;
+  }
+
+  .heading,.serif,h1,h2,h3 {
+    font-family:"Old Standard TT",serif;
+  }
+
+  strong {
+    font-weight:600;
+  }
+
+  q:before {
+    content:"\201C";
+  }
+
+  q:after {
+    content:"\201D";
+  }
+
+  del,s {
+    text-decoration:line-through;
+  }
+
+  blockquote {
+    font-family:"Old Standard TT",serif;
+    text-align:center;
+    padding:50px;
+  }
+
+  blockquote p {
+    display:inline-block;
+    font-style:italic;
+  }
+
+  blockquote:before,blockquote:after {
+    font-family:"Old Standard TT",serif;
+    content:'\201C';
+    font-size:35px;
+    color:#403c3b;
+  }
+
+  blockquote:after {
+    content:'\201D';
+  }
+
+  hr {
+    width:40%;
+    height: 1px;
+    background:#403c3b;
+    margin: 25px auto;
+  }
+
+  h1 {
+    font-size:35px;
+  }
+
+  h2 {
+    font-size:28px;
+  }
+
+  h3 {
+    font-size:22px;
+    margin-top:18px;
+  }
+
+  h1 a,h2 a,h3 a {
+    text-decoration:none;
+  }
+
+  h1,h2 {
+    margin-top:28px;
+  }
+
+  #sub-header, time {
+    color:#403c3b;
+    font-size:13px;
+  }
+
+  #sub-header {
+    margin: 0 4px;
+  }
+
+  #nav h1 a {
+    font-size:35px;
+    color:#1d1313;
+    line-height:120%;
+  }
+
+  .posts_listing a,#nav a {
+    text-decoration: none;
+  }
+
+  li {
+    margin-left: 20px;
+  }
+
+  ul li {
+    margin-left: 5px;
+  }
+
+  ul li {
+    list-style-type: none;
+  }
+  ul li:before {
+    content:"\00BB \0020";
+  }
+
+  #nav ul li:before, .posts_listing li:before {
+    content:'';
+    margin-right:0;
+  }
+
+  #content {
+    text-align:left;
+    width:100%;
+    font-size:15px;
+    padding:60px 0 80px;
+  }
+
+  #content h1,#content h2 {
+    margin-bottom:5px;
+  }
+
+  #content h2 {
+    font-size:25px;
+  }
+
+  #content .entry-content {
+    margin-top:15px;
+  }
+
+  #content time {
+    margin-left:3px;
+  }
+
+  #content h1 {
+    font-size:30px;
+  }
+
+  .highlight {
+    margin: 10px 0;
+  }
+
+  .posts_listing {
+    margin:0 0 50px;
+  }
+
+  .posts_listing li {
+    margin:0 0 25px 15px;
+  }
+
+  .posts_listing li a:hover,#nav a:hover {
+    text-decoration: underline;
+  }
+
+  #nav {
+    text-align:center;
+    position:static;
+    margin-top:60px;
+  }
+
+  #nav ul {
+    display: table;
+    margin: 8px auto 0 auto;
+  }
+
+  #nav li {
+    list-style-type:none;
+    display:table-cell;
+    font-size:15px;
+    padding: 0 20px;
+  }
+
+  #links {
+    margin: 50px 0 0 0;
+  }
+
+  #links :nth-child(2) {
+    float:right;
+  }
+
+  #not-found {
+    text-align: center;
+  }
+
+  #not-found a {
+    font-family:"Old Standard TT",serif;
+    font-size: 200px;
+    text-decoration: none;
+    display: inline-block;
+    padding-top: 225px;
+  }
+
+  @media (max-width: 750px) {
+    body {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    #nav h1 a {
+      font-size:28px;
+    }
+
+    #nav li {
+      font-size:13px;
+      padding: 0 15px;
+    }
+
+    #content {
+      margin-top:0;
+      padding-top:50px;
+      font-size:14px;
+    }
+
+    #content h1 {
+      font-size:25px;
+    }
+
+    #content h2 {
+      font-size:22px;
+    }
+
+    .posts_listing li div {
+      font-size:12px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    body {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    #nav h1 a {
+      font-size:22px;
+    }
+
+    #nav li {
+      font-size:12px;
+      padding: 0 10px;
+    }
+
+    #content {
+      margin-top:0;
+      padding-top:20px;
+      font-size:12px;
+    }
+
+    #content h1 {
+      font-size:20px;
+    }
+
+    #content h2 {
+      font-size:18px;
+    }
+
+    .posts_listing li div{
+      font-size:12px;
+    }
+  }
+</style>
+
+
+    
+  </head>
+
+  <body>
+    <section id=nav>
+      <h1><a href="https://saikumar.dev/">404 [!] Found </a></h1>
+      <ul>
+        
+          <li><a href="//github.com/sgummaluri">GitHub</a></li>
+        
+          <li><a href="https://www.linkedin.com/in/saikumargummaluri/">LinkedIn</a></li>
+        
+          <li><a href="https://saikumar.dev/index.xml">RSS</a></li>
+        
+          <li><a href="https://saikumar.dev/docs/sgummaluri.pdf">Resume</a></li>
+        
+      </ul>
+    </section>
+
+
+<section id=content>
+  <h1> HTTP Status Codes - 2 </h1>
+
+  
+    <div id=sub-header>
+      May 2020 · 7 minute read
+    </div>
+  
+
+  <div class="entry-content">
+    
+
+<p>This article is the second in the HTTP Status Code Series and deals with the category of Successful Responses. The first article in the series can be found <a href="https://saikumar.dev/posts/http-status-codes-1">here</a>.</p>
+
+<p>We are going to take a look at the most frequently used Status codes for a successful response that is sent from the server to the client. Also, bear in mind that we are not going to deal with the status codes <code>207 Multi-Status</code> and <code>208 Already Reported</code>, which are used in the WebDAV cases; the <code>226 IM Used</code> status code which is used with HTTP Delta Encoding. You can read more about HTTP Delta Encoding <a href="https://tools.ietf.org/html/rfc3229">here</a>.</p>
+
+<h3 id="200-ok">200 OK</h3>
+
+<p>This is the most widely used status code in the world of RESTful services. This response indicates that a request from the client is accepted by the server. In simpler terms, the request that is pushed to the server has succeeded. This response is cacheable by default, unless we specify otherwise.</p>
+
+<p>Client Request</p>
+
+<pre><code>GET /hello.txt HTTP/1.1
+Host: www.example.org
+Accept: text/*
+</code></pre>
+
+<p>Server Response</p>
+
+<pre><code>HTTP/1.1 200 OK
+Date: Mon, 27 Jul 2009 12:28:53 GMT
+Server: Apache
+Last-Modified: Wed, 22 Jul 2009 19:15:56 GMT
+ETag: &quot;34aa387-d-1568eb00&quot;
+Accept-Ranges: bytes
+Content-Length: 51
+</code></pre>
+
+<p>However, note that the interpretation of the body of the <code>200 OK</code> response usually depends on the HTTP verb that is used to make the request. Below is the summary of the interpretation of <code>200 OK</code> with different HTTP verbs</p>
+
+<h4 id="get">GET</h4>
+
+<p>The payload for the case of a <code>GET</code> represents the target resource on the server side. In the above example, it is going to be the representation of the resource hello.txt that we performed a <code>GET</code> on.</p>
+
+<h4 id="head">HEAD</h4>
+
+<p>The representation in the case of <code>HEAD</code> is the same as that of <code>GET</code>, except that there is no representation of the data that is returned and just contains the headers.</p>
+
+<h4 id="post">POST</h4>
+
+<p>When <code>200 OK</code> is returned with a <code>POST</code> request, it usually is a representation of the status of the action or the entire resource that is obtained as a result of the action that is triggered through the <code>POST</code>.</p>
+
+<h4 id="put-delete">PUT, DELETE</h4>
+
+<p>The response payload for <code>PUT</code> and <code>DELETE</code> verbs denotes the representation of the status of the action that is performed.</p>
+
+<h3 id="201-created">201 Created</h3>
+
+<p>This status code signifies that the request from the client is accepted by the server and processed successfully and has created one or more new resources as a part of the request. The payload that is sent along with the <code>201 Created</code> response usually contain a <code>ETag</code> header or a <code>Location</code> header or both. The content of these headers in the payload is for identifying where the new resources are created.</p>
+
+<p>Client Request</p>
+
+<pre><code>POST example.com/add-hello HTTP/1.1
+Content-Type: application/json
+
+{“name”: “hello”}
+</code></pre>
+
+<p>Server Response</p>
+
+<pre><code>HTTP/1.1 201 Created
+Location: /resources/1001
+</code></pre>
+
+<p>In the above example, we are using the <code>POST</code> HTTP verb to trigger the request from the client side and the response payload contains the <code>Location</code> Header. This header field represents the effective URI that can be used to identify the newly created resource.</p>
+
+<p>In the case of the <code>PUT</code> HTTP verb, there is no <code>Location</code> header that is sent as a part of the response payload and in this case, the request URI itself can be used to identify the resource that is created as a part of the request that is triggered by the client.</p>
+
+<h3 id="202-accepted">202 Accepted</h3>
+
+<p>This status code indicates that the server has accepted the request for processing and the actual processing of the request itself is under-way and has not completed yet. The eventual result of the processing could vary and the request processing may not run through completion for whatever reasons.</p>
+
+<p>The specification <a href="https://tools.ietf.org/html/rfc7231#page-51">RFC 7231</a> itself says that this status code is <code>“Intentionally NonCommital”</code>. This could be used in scenarios where the request is ought to trigger a batch processing job that is asynchronous in nature. By default, HTTP does not have a way to resend the status of an asynchronous operation.</p>
+
+<p>The payload of the response ideally contains a status-monitor that is used to provide information to the user as to what the current status of the job that is triggered by the request is.</p>
+
+<p>Client Request</p>
+
+<pre><code>POST /long-running-job HTTP/1.1
+Content-Type: application/json
+Host: example.org
+</code></pre>
+
+<p>Server Response</p>
+
+<pre><code>HTTP/1.1 202 Accepted
+Link: &lt;/running-job-status/&gt; rel=&quot;http://example.org/running-job-status&quot;
+Content-Length: 0
+</code></pre>
+
+<h3 id="203-non-authoritative-information">203 Non-Authoritative Information</h3>
+
+<p>This status code is not generally returned by the server that is handling the requests itself, but by a <code>HTTP proxy</code> that sits between the client and the server. This response indicates that the proxy sitting in between has actually modified the response body from the server and hence the <strong>“Non-Authoritative Information”</strong>. A downside or a side-effect of this status code is that the client never gets to know what the actual response from the server was and that information is lost forever.</p>
+
+<p>To get around the loss of information with respect to the actual response, it is suggested to use the <code>Warning</code> field specified in the <a href="https://tools.ietf.org/html/rfc7234#section-5.5">RFC 7234</a>. As per the specification, a <code>Warning</code> field is used to add additional information about the modification made to the response message which might not be conveyed as a part of the status code.</p>
+
+<p>When using a <code>Warning</code> field, we add a specific <em>warning code</em> to the value of the field and that warning code indicates the type of <em>transformation</em> that is applied at the proxy level. Also, the status code that is returned by the server is preserved. Hence, there is no loss of information with the use of <code>Warning</code> field.</p>
+
+<p>Client Request</p>
+
+<pre><code>GET /my-resource HTTP/1.1
+Host: example.org
+</code></pre>
+
+<p>Server Response (without Warning field)</p>
+
+<pre><code>HTTP/1.1 203 Non-Authoritative Information
+Content-Type: text/html
+</code></pre>
+
+<p>Server Response (with Warning Field)</p>
+
+<pre><code>HTTP/1.1 200 OK
+Content-type: text/html
+Warning: 214 proxy.example.org “The response HTML has been modified”
+</code></pre>
+
+<p>One thing to note here is the <code>Warning</code> Code <code>214</code> that is added to the <code>Warning</code> header field. <code>214</code> means <em>‘Transformation Applied’</em>. You can learn more about the warning codes <a href="https://tools.ietf.org/html/rfc7234#section-5.5.1">here</a>.</p>
+
+<h3 id="204-no-content">204 No Content</h3>
+
+<p>This status code is the same as <code>200 OK</code>, but with only difference that <code>204 No Content</code> is returned in cases where the server has accepted the request successfully and has nothing that is to be sent back to the client. A real world scenario where this can be returned is the scenario where a client need not shift to a different document view after the request it triggered has successfully been accepted and acknowledged. This response is cacheable by default.</p>
+
+<p>Client Request</p>
+
+<pre><code>POST /updateView HTTP/1.1
+Host: example.org
+
+{“name”:”hello”}
+</code></pre>
+
+<p>Server Response</p>
+
+<pre><code>HTTP/1.1 204 No Content
+</code></pre>
+
+<h3 id="205-reset-content">205 Reset Content</h3>
+
+<p>This status code indicates that the server has successfully processed the request and requires the client to reset the document view to the original state as received from the origin server. In the real world, an appropriate use case for this status code could be a data entry form, which when filled and submitted to the server, has to be reset to the original state for the next entry to be made, so that the user can start filling in the next entry.</p>
+
+<p>There will not be any payload generated for this type of response from the server. The server <strong>MUST</strong> do one of the following in the case of <code>205 Reset Content</code></p>
+
+<ul>
+<li>Send a <code>Content-Length</code> header field with value set to 0</li>
+<li>Send a zero length payload by including a <code>Transfer-Encoding</code> header field with a value of chunked and a message body consisting of single chunk of zero-length</li>
+<li>Close connection immediately after sending blank line terminating header section</li>
+</ul>
+
+<p>To put things in perspective, <code>204</code> status code can be returned in cases where there are a series of edits on a single document and <code>205</code> status code can be returned in cases where there are a series of document additions.</p>
+
+<h3 id="206-partial-content">206 Partial Content</h3>
+
+<p>This status code is returned in cases where a client wants to retrieve a part of a really large file. Since not every server supports this, the client must get to know of the availability of the support for partial content on the server side. To let a client know that partial content requests are supported, the server needs to send the client an <code>Accept-Ranges</code> header (maybe when the client triggers a <code>HEAD</code> request). Once the client sees the <code>Accept-Ranges</code> header field in the response payload, it can proceed to issue a request to the server that contains a <code>Range</code> header field, specifying the bytes range it wishes to receive. Below series of request/response snippets help understand this clearly</p>
+
+<p>Client Request</p>
+
+<pre><code>HEAD /getResource HTTP/1.1
+Host: example.org
+</code></pre>
+
+<p>Server Response</p>
+
+<pre><code>HTTP/1.1 200 OK
+…
+Accept-Ranges: bytes
+Content-Length: 5000
+…
+</code></pre>
+
+<p>Client Request</p>
+
+<pre><code>GET /getResource HTTP/1.1
+Host: example.org
+Range: bytes=0-999
+</code></pre>
+
+<p>Server Response</p>
+
+<pre><code>HTTP/1.1 206 Partial Content
+…
+Accept-Ranges: bytes
+Content-Range: bytes 0-999/5000
+…
+
+{data}
+</code></pre>
+
+<p>The final server response snippet shows the partial content of the first 1000 bytes being sent from the server as a part of the <code>206 Partial Content</code> response.</p>
+
+  </div>
+
+  <div id=links>
+    
+      <a class="basic-alignment left" href="https://saikumar.dev/posts/http-status-codes-1/">&laquo; HTTP Status Codes - 1</a>
+    
+    
+  </div>
+</section>
+
+  
+</body>
+</html>
+
+
+

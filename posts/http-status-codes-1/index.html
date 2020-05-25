@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    
+
+    
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:400|Old+Standard+TT:400' rel='stylesheet' type='text/css'>
+    
+
+    <link rel="icon" type="image/png" href="https://saikumar.dev/favicon_16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="https://saikumar.dev/favicon_32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://saikumar.dev/favicon_128x128.png" sizes="128x128">
+
+    <title>
+      
+      
+         HTTP Status Codes - 1 
+      
+    </title>
+    <link rel="canonical" href="https://saikumar.dev/posts/http-status-codes-1/">
+
+    <style>
+  * {
+    border:0;
+    font:inherit;
+    font-size:100%;
+    vertical-align:baseline;
+    margin:0;
+    padding:0;
+    color: black;
+    text-decoration-skip: ink;
+  }
+
+  body {
+    font-family:'Open Sans', 'Myriad Pro', Myriad, sans-serif;
+    font-size:17px;
+    line-height:160%;
+    color:#1d1313;
+    max-width:700px;
+    margin:auto;
+  }
+
+  p {
+    margin: 20px 0;
+  }
+
+  a img {
+    border:none;
+  }
+
+  img {
+    margin: 10px auto 10px auto;
+    max-width: 100%;
+    display: block;
+  }
+
+  .left-justify {
+    float: left;
+  }
+
+  .right-justify {
+    float:right;
+  }
+
+  pre, code {
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    background-color: #f7f7f7;
+  }
+
+  code {
+    font-size: 12px;
+    padding: 4px;
+  }
+
+  pre {
+    margin-top: 0;
+    margin-bottom: 16px;
+    word-wrap: normal;
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+  }
+
+  pre>code {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    word-break: normal;
+    white-space: pre;
+    background: transparent;
+    border: 0;
+  }
+
+  pre code {
+    display: inline;
+    max-width: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    line-height: inherit;
+    word-wrap: normal;
+    background-color: transparent;
+    border: 0;
+  }
+
+  pre code::before,
+  pre code::after {
+    content: normal;
+  }
+
+  em,q,em,dfn {
+    font-style:italic;
+  }
+
+  .sans,html .gist .gist-file .gist-meta {
+    font-family:"Open Sans","Myriad Pro",Myriad,sans-serif;
+  }
+
+  .mono,pre,code,tt,p code,li code {
+    font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;
+  }
+
+  .heading,.serif,h1,h2,h3 {
+    font-family:"Old Standard TT",serif;
+  }
+
+  strong {
+    font-weight:600;
+  }
+
+  q:before {
+    content:"\201C";
+  }
+
+  q:after {
+    content:"\201D";
+  }
+
+  del,s {
+    text-decoration:line-through;
+  }
+
+  blockquote {
+    font-family:"Old Standard TT",serif;
+    text-align:center;
+    padding:50px;
+  }
+
+  blockquote p {
+    display:inline-block;
+    font-style:italic;
+  }
+
+  blockquote:before,blockquote:after {
+    font-family:"Old Standard TT",serif;
+    content:'\201C';
+    font-size:35px;
+    color:#403c3b;
+  }
+
+  blockquote:after {
+    content:'\201D';
+  }
+
+  hr {
+    width:40%;
+    height: 1px;
+    background:#403c3b;
+    margin: 25px auto;
+  }
+
+  h1 {
+    font-size:35px;
+  }
+
+  h2 {
+    font-size:28px;
+  }
+
+  h3 {
+    font-size:22px;
+    margin-top:18px;
+  }
+
+  h1 a,h2 a,h3 a {
+    text-decoration:none;
+  }
+
+  h1,h2 {
+    margin-top:28px;
+  }
+
+  #sub-header, time {
+    color:#403c3b;
+    font-size:13px;
+  }
+
+  #sub-header {
+    margin: 0 4px;
+  }
+
+  #nav h1 a {
+    font-size:35px;
+    color:#1d1313;
+    line-height:120%;
+  }
+
+  .posts_listing a,#nav a {
+    text-decoration: none;
+  }
+
+  li {
+    margin-left: 20px;
+  }
+
+  ul li {
+    margin-left: 5px;
+  }
+
+  ul li {
+    list-style-type: none;
+  }
+  ul li:before {
+    content:"\00BB \0020";
+  }
+
+  #nav ul li:before, .posts_listing li:before {
+    content:'';
+    margin-right:0;
+  }
+
+  #content {
+    text-align:left;
+    width:100%;
+    font-size:15px;
+    padding:60px 0 80px;
+  }
+
+  #content h1,#content h2 {
+    margin-bottom:5px;
+  }
+
+  #content h2 {
+    font-size:25px;
+  }
+
+  #content .entry-content {
+    margin-top:15px;
+  }
+
+  #content time {
+    margin-left:3px;
+  }
+
+  #content h1 {
+    font-size:30px;
+  }
+
+  .highlight {
+    margin: 10px 0;
+  }
+
+  .posts_listing {
+    margin:0 0 50px;
+  }
+
+  .posts_listing li {
+    margin:0 0 25px 15px;
+  }
+
+  .posts_listing li a:hover,#nav a:hover {
+    text-decoration: underline;
+  }
+
+  #nav {
+    text-align:center;
+    position:static;
+    margin-top:60px;
+  }
+
+  #nav ul {
+    display: table;
+    margin: 8px auto 0 auto;
+  }
+
+  #nav li {
+    list-style-type:none;
+    display:table-cell;
+    font-size:15px;
+    padding: 0 20px;
+  }
+
+  #links {
+    margin: 50px 0 0 0;
+  }
+
+  #links :nth-child(2) {
+    float:right;
+  }
+
+  #not-found {
+    text-align: center;
+  }
+
+  #not-found a {
+    font-family:"Old Standard TT",serif;
+    font-size: 200px;
+    text-decoration: none;
+    display: inline-block;
+    padding-top: 225px;
+  }
+
+  @media (max-width: 750px) {
+    body {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    #nav h1 a {
+      font-size:28px;
+    }
+
+    #nav li {
+      font-size:13px;
+      padding: 0 15px;
+    }
+
+    #content {
+      margin-top:0;
+      padding-top:50px;
+      font-size:14px;
+    }
+
+    #content h1 {
+      font-size:25px;
+    }
+
+    #content h2 {
+      font-size:22px;
+    }
+
+    .posts_listing li div {
+      font-size:12px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    body {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    #nav h1 a {
+      font-size:22px;
+    }
+
+    #nav li {
+      font-size:12px;
+      padding: 0 10px;
+    }
+
+    #content {
+      margin-top:0;
+      padding-top:20px;
+      font-size:12px;
+    }
+
+    #content h1 {
+      font-size:20px;
+    }
+
+    #content h2 {
+      font-size:18px;
+    }
+
+    .posts_listing li div{
+      font-size:12px;
+    }
+  }
+</style>
+
+
+    
+  </head>
+
+  <body>
+    <section id=nav>
+      <h1><a href="https://saikumar.dev/">404 [!] Found </a></h1>
+      <ul>
+        
+          <li><a href="//github.com/sgummaluri">GitHub</a></li>
+        
+          <li><a href="https://www.linkedin.com/in/saikumargummaluri/">LinkedIn</a></li>
+        
+          <li><a href="https://saikumar.dev/index.xml">RSS</a></li>
+        
+          <li><a href="https://saikumar.dev/docs/sgummaluri.pdf">Resume</a></li>
+        
+      </ul>
+    </section>
+
+
+<section id=content>
+  <h1> HTTP Status Codes - 1 </h1>
+
+  
+    <div id=sub-header>
+      May 2020 · 8 minute read
+    </div>
+  
+
+  <div class="entry-content">
+    
+
+<p>It is an undeniable fact that <strong>HTTP</strong> is the de facto standard of the Internet. Wikipedia terms HTTP as an application protocol for distributed, collaborative, hypermedia based information systems. With the advent of the world wide web, came applications that talked to each other over a network to exchange information. Be it the age old RPC style of directly invoking a network service or calling a RESTful endpoint on a server, HTTP is the medium over which this communication happens. Amongst the various use cases of HTTP, web application development has the majority share.</p>
+
+<p>If we look at the current state of web development, <strong>REST</strong> has gained a huge adoption and has changed the way web applications are built. REST is an architectural style first introduced by <em>Roy Fielding</em> in his <a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/fielding_dissertation.pdf">PhD dissertation</a>. Interestingly, Roy Fielding was also a member of the team that drafted the initial version of HTTP. I suggest you go through what REST is all about as that discussion deserves a separate series of articles of its own.</p>
+
+<p><em>REST</em>, traditionally in itself, is heavily reliant on <em>HTTP</em> as a protocol for transfer of information between the client (the browser) and the server. The usability of any application is directly proportional to how effectively it handles the scenarios in which the application is faulted. It ultimately boils down to how the developer of the RESTful services builds responses being sent back to the client in general and the errors in specific. Since RESTful services, in most cases, are HTTP services, sending correct HTTP Status codes back to the client becomes very important. Hence it serves a clear purpose to understand the nature of HTTP status codes. Initially, when I started out with writing this series of articles, I did not intend to write them as a series of articles. But midway through writing, it made sense to break the article into a series of articles to be able to discuss clearly the details of the status codes. This series of articles aims to provide enough understanding required to choose the appropriate status code for a scenario be it as simple as returning a HTTP status code to an API call from a browser or when building a public facing API for other devs or end users to build on top of.</p>
+
+<h2 id="pretext">Pretext</h2>
+
+<p>This series of posts heavily relies on <a href="https://tools.ietf.org/html/rfc7231">RFC 7231</a>, <a href="https://tools.ietf.org/html/rfc7232">RFC 7232</a>, <a href="https://tools.ietf.org/html/rfc7233">RFC 7233</a>, <a href="https://tools.ietf.org/html/rfc7234">RFC 7234</a>, <a href="https://tools.ietf.org/html/rfc7235">RFC 7235</a> that layout the HTTP Specification, Authentication, Caching and other semantics. REST, as a paradigm, deals with everything in terms of ‘Resources’. It is important to understand that <em>Resource</em> is nothing but a target of a HTTP Request. It could be as simple as a blog post residing on a server and each resource is identified by its <em>Uniform Resource Identifier (URI)</em>. It should also be noted that HTTP protocol is a simple specification and <em>does not</em> impose any restrictions on any implementations on a User Agent’s side. This post also assumes that the reader has a basic to decent understanding of what REST is all about and that the reader has hand-on experience with implementing RESTful services.</p>
+
+<h2 id="categories-of-http-status-codes">Categories of HTTP Status Codes</h2>
+
+<p>According to <a href="https://tools.ietf.org/html/rfc7231">RFC 7321</a>, all HTTP status codes can be classified into the following five categories.</p>
+
+<ul>
+<li>Informational (1XX) - Request is received and continuing with processing</li>
+<li>Successful (2XX) - Request is successfully received, understood and accepted by the server.</li>
+<li>Redirection (3XX) - Further action is needed to finish the request</li>
+<li>Client Error (4XX) - There is an issue with the received request (bad request) or can’t be fulfilled</li>
+<li>Server Error (5XX) - The request is valid but server failed to fulfill it.</li>
+</ul>
+
+<p>It should also be understood that HTTP Status codes are extensible as long as they are mapped to the one of the above categories. That means, we can send a custom HTTP Code to the client but only condition is that it should be also of the format (CXX) where C in {1, 2 ,3 ,4 ,5}. The current article is the first of the series and talks about the <strong>Informational HTTP Error Codes</strong>.</p>
+
+<h3 id="100-continue">100 Continue</h3>
+
+<p>As developers, we do not get to frequently use HTTP Status Code <code>100 Continue</code>. This is used in scenarios where we want to make sure the server is ready to accept the request. The client sends an <code>EXPECT</code> value in the request header specifying that it is expecting a <code>100-Continue</code> from the server. Once it receives the <code>100 Continue Response</code> from the server, the client continues to send the request. Let’s take a look at the request below (adapted from <a href="https://tools.ietf.org/html/rfc7231">RFC 7231</a>)</p>
+
+<p>Client Request</p>
+
+<pre><code>PUT /remote/large-file HTTP/1.1
+Host: api.remotesite.com
+Content-Type: video/h264
+Content-Length: 999999999999
+Expect: 100-continue
+</code></pre>
+
+<p>The key thing to notice here is the <code>Expect</code> header. It is not case-sensitive. This request means that the client is expecting a <code>100-Continue</code> response from the server and informs the server that it is about to send, maybe a really large request payload and it is expecting an intermediate response of <code>100</code> before continuing with sending the actual payload. This is very useful in cases where the client assumes that an error or failure is likely and avoids having to send the payload unncessarily in case it doesn’t receive the intermediate response it is expecting.</p>
+
+<h3 id="101-switching-protocols">101 Switching Protocols</h3>
+
+<p>The <code>101 Switching Protocols</code> status code is received by a client only when it requests for a change in the protocol used for communication. This is done via the <code>UPGRADE</code> header field. The server’s <code>101</code> response also contains an <code>UPGRADE</code> header field indicating which protocol the communication is being switched to. Also, <a href="https://tools.ietf.org/html/rfc7231">RFC 7231</a> assumes that the server agrees to switch the application protocol only if there is an inherent advantage in doing so.</p>
+
+<p>The scenarios where this could be used is the cases involving switching to a higher version of HTTP protocol whenever possible as the higher version might have additional advantages than the lower version (From <code>HTTP/1.1</code> to <code>HTTP/2</code>). One other scenario may be moving to a real-time protocol (like Websockets) to satisfy the application’s needs (eg. chat applications).</p>
+
+<p>Let us take a look at the handshake that happens when establishing a connection between a client and a server using WebSockets. This is discussed in the <a href="https://tools.ietf.org/html/rfc6455#section-1.2">RFC 6455</a> that outlines the WebSocket protocol specification.</p>
+
+<p>Client Request</p>
+
+<pre><code>GET /chat HTTP/1.1
+Host: server.example.com
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
+Origin: http://example.com
+Sec-WebSocket-Protocol: chat, superchat
+Sec-WebSocket-Version: 13
+</code></pre>
+
+<p>Server Response</p>
+
+<pre><code>HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
+Sec-WebSocket-Protocol: chat
+</code></pre>
+
+<p>The first part of the above snippet denotes the request and the second part denotes the response. Key things to note here are the <code>UPGRADE</code> header fields that are part of the request payload and response payload. The client is requesting for a switch in the application protocol from <code>HTTP</code> (as the <code>GET</code> request signifies) to <code>WebSocket</code> (denoted by the <code>UPGRADE</code> Header field). The server responds with the <code>101 Switching Protocols</code> response and also carries the <code>UPGRADE</code> header field denoting the protocol it is switching to (Websocket in this case).</p>
+
+<h3 id="102-processing">102 Processing</h3>
+
+<p>This status code is used very rarely and is obsolete in the updated versions of the HTTP Specification. In fact, <a href="https://tools.ietf.org/html/rfc7231">RFC 7231</a> does not make a mention of this HTTP Status code. Hence, we are not going to get into the specifics of <code>102 Processing</code>. It is enough if we understand that this is used in the cases of WebDAV applications. You can read more about it <a href="https://evertpot.com/http/102-processing">here</a> and <a href="https://developer.mozilla.org/en-US/docs/Glossary/WebDAV">here</a>.</p>
+
+<h3 id="103-early-hints">103 Early Hints</h3>
+
+<p>This is an experimental HTTP Status code that was introduced as a part of <a href="https://tools.ietf.org/html/rfc8297">RFC 8297</a>. This Status code was introduced with the aim to accommodate for optimisations such as ‘preloading’ and reduce the perceived latency on a web page. In a nutshell, this status code allows the server to send some headers early even before the actual response. This is supposed to be used together with the <code>Link</code> header field that lets the browser preload the resources even before it receives the actual response.</p>
+
+<p>Let’s take a look at the example from the RFC and dissect it.</p>
+
+<p>Client request</p>
+
+<pre><code>GET / HTTP/1.1
+Host: example.com
+</code></pre>
+
+<p>Server response</p>
+
+<pre><code>HTTP/1.1 103 Early Hints
+Link: &lt;/style.css&gt;; rel=preload; as=style
+Link: &lt;/script.js&gt;; rel=preload; as=script
+
+HTTP/1.1 200 OK
+Date: Fri, 26 May 2017 10:02:11 GMT
+Content-Length: 1234
+Content-Type: text/html; charset=utf-8
+Link: &lt;/style.css&gt;; rel=preload; as=style
+Link: &lt;/script.js&gt;; rel=preload; as=script
+</code></pre>
+
+<p>In the above example, the client sent a request to the server and received a <code>103 Early Hints</code> response. Also note the <code>200 OK</code> that it later received. As a part of the <code>103</code> that the client received, there are a couple of <code>LINK</code> header fields. This is a  hint to the client that while the server prepares to send the actual response, it can proceed with loading the resources that have been mentioned in the <code>LINK</code> header field of the response. So, starting to preload the JS and CSS resources is a good reduction in the total page load time.</p>
+
+<p>However, the caveats here are that the actual response <em>may</em> or <em>may not</em> include the resources that are mentioned in the intermediate <code>103</code> response. Hence, the client in this case is not supposed to perform any actions that are not reversible. In other words, the operations that are performed by the client based on an <code>103 Early Hints</code> response should be <em>Idempotent</em> and <em>Safe</em> (like a <code>/GET</code> operation).
+This is all with respect to the Informational HTTP Status codes. We shall see the Successful HTTP Status codes in the upcoming article.</p>
+
+<h2 id="further-reading">Further Reading</h2>
+
+<ul>
+<li><a href="https://tools.ietf.org/html/rfc7230#section-6.7">RFC 7230</a></li>
+<li><a href="https://tools.ietf.org/html/rfc7231">RFC 7231</a></li>
+<li><a href="https://tools.ietf.org/html/rfc7232">RFC 7232</a></li>
+<li><a href="https://tools.ietf.org/html/rfc7233">RFC 7233</a></li>
+<li><a href="https://tools.ietf.org/html/rfc7234">RFC 7234</a></li>
+<li><a href="https://tools.ietf.org/html/rfc7235">RFC 7235</a></li>
+<li><a href="https://news.ycombinator.com/item?id=15590049">103 Early Hints discussion on Hacker News</a></li>
+<li><a href="https://evertpot.com/http/102-processing">102 Processing</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#Information_responses">MDN</a></li>
+</ul>
+
+  </div>
+
+  <div id=links>
+    
+      <a class="basic-alignment left" href="https://saikumar.dev/posts/adr/">&laquo; Architecture Decision Records</a>
+    
+    
+      <a class="basic-alignment left" href="https://saikumar.dev/posts/http-status-codes-2/">HTTP Status Codes - 2 &raquo;</a>
+    
+  </div>
+</section>
+
+  
+</body>
+</html>
+
+
+

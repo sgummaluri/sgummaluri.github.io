@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Documentation on 404 [!] Found</title>
+    <link>https://saikumar.dev/tags/documentation/</link>
+    <description>Recent content in Documentation on 404 [!] Found</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 25 Apr 2020 18:32:59 +0530</lastBuildDate>
+    
+	<atom:link href="https://saikumar.dev/tags/documentation/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Architecture Decision Records</title>
+      <link>https://saikumar.dev/posts/adr/</link>
+      <pubDate>Sat, 25 Apr 2020 18:32:59 +0530</pubDate>
+      
+      <guid>https://saikumar.dev/posts/adr/</guid>
+      <description>Every software developer that ever worked on a project that has been under development for a considerable amount of time or ever dealt with a mature codebase, would have criticised the way things are structured in the project or might have even cussed about the orchestration of the components and the design overall.
+This inevitably seems to happen in scenarios where a new developer is on-boarded to work on a project/product that is already in production and has real users using that product.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://saikumar.dev/</loc>
+    <lastmod>2020-05-25T19:23:14+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://saikumar.dev/tags/http/</loc>
+    <lastmod>2020-05-25T19:23:14+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://saikumar.dev/tags/http-status-codes/</loc>
+    <lastmod>2020-05-25T19:23:14+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://saikumar.dev/posts/http-status-codes-2/</loc>
+    <lastmod>2020-05-25T19:23:14+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saikumar.dev/posts/</loc>
+    <lastmod>2020-05-25T19:23:14+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://saikumar.dev/tags/</loc>
+    <lastmod>2020-05-25T19:23:14+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://saikumar.dev/posts/http-status-codes-1/</loc>
+    <lastmod>2020-05-10T19:56:44+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saikumar.dev/tags/architecture/</loc>
+    <lastmod>2020-04-25T18:32:59+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://saikumar.dev/posts/adr/</loc>
+    <lastmod>2020-04-25T18:32:59+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saikumar.dev/tags/documentation/</loc>
+    <lastmod>2020-04-25T18:32:59+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://saikumar.dev/posts/hello-world/</loc>
+    <lastmod>2019-09-13T18:25:31+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://saikumar.dev/tags/meta/</loc>
+    <lastmod>2019-09-13T18:25:31+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://saikumar.dev/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>
